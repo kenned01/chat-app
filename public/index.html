@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    body, html {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+
+    body, .card{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: indigo;
+    }
+
+    .card {
+      width: 80%;
+      height: 80%;
+      background-color: #fff;
+      border-radius: 10px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      flex-flow: column;
+    }
+
+    .btn {
+      padding: .75rem;
+      border-radius: 8px;
+      border: 1px solid indigo;
+      background-color: #fff;
+      color: indigo;
+      transition-property: background-color, color ;
+      transition-duration: .5s, .5s;
+      transition-timing-function: ease-in-out, ease-in;
+    }
+
+    .btn:hover{
+      cursor: pointer;
+      background-color: indigo;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <section class="card">
+    <h1>CHAT WITH US</h1>
+    <button class="btn">Go to chat</button>
+  </section>
+</body>
+</html>

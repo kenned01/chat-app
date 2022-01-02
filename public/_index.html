@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Socket io</h1>
+
+
+  <ul id="messages"></ul>
+  <form id="form">
+    <input id="message" autocomplete="off" /><button>Send</button>
+  </form>
+
+  <script src="https://cdn.socket.io/4.2.0/socket.io.min.js" integrity="sha384-PiBR5S00EtOj2Lto9Uu81cmoyZqR57XcOna1oAuVuIEjzj0wpqDVfD0JA9eXlRsj" crossorigin="anonymous"></script>
+
+  <script>
+
+    var socket = io("http://localhost:8000/", {
+      path: "/chat/"
+    })
+
+    var room = getRoom()
+    var form   = document.getElementById("form")
+
+    socket.on("connect", joinRoom)
+    socket.on('chat message', addMessage)
+    form.addEventListener("submit", sendMessage)
+
+    function joinRoom() {
+      let data = {
+        room
+      }
+
+      socket.emit("join", data)
+    }
+
+    function getRoom() {
+      let url = new URL(window.location)
+      return url.searchParams.get("room") ?? "room_1"
+    }
+
+    function sendMessage(e) {
+      e.preventDefault()
+
+      let data = {
+        room_id: room,
+        message: document.getElementById("message")?.value ?? ''
+      }
+
+      socket.emit('chat message', data)
+    }
+
+    function addMessage(message) {
+      console.log("add message")
+      var list = document.getElementById('messages')
+      var li   = document.createElement("li")
+      
+      li.innerHTML = message
+      list.appendChild(li)
+    }
+  
+  </script>
+</body>
+</html>
