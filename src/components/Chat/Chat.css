@@ -1,0 +1,131 @@
+.view.chat{
+  width: 100%;
+  padding: 0% 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(240, 72%, 22%);
+  user-select: none;
+  --blue: #3498ff;
+  --white: #fff;
+  --rose: hsl(240, 80%, 50%);
+  --grey: hsl(0, 0%, 65%);
+}
+
+.chat-container {
+  display: grid;
+  grid-template-areas: "chat-list chat-title" "chat-list message-list" "chat-list chat-form";
+  grid-template-columns: 25% 75%;
+  grid-template-rows: 10% 80% 10%;
+}
+
+.chat-container {
+  border-radius: 10px;
+  height: 95vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.chat-title {
+  padding: 10px;
+  background: var(--rose);
+  grid-area: chat-title;
+  color: var(--white);
+}
+
+.chat-list {
+  grid-area: chat-list;
+  border-right: 1px solid rgb(190, 192, 173);
+}
+
+.message-list {
+  padding: 10px;
+  grid-area: message-list;
+}
+
+.message-list {
+  overflow-y: auto;
+}
+
+.chat-form {
+  padding: 10px;
+  grid-area: chat-form;
+}
+
+.chat-form {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--white);
+  border-top: 1px solid var(--grey);
+}
+
+.chat_input {
+  width: 90% !important;
+}
+
+.chat_input_button {
+  width: 50px;
+}
+
+.message-container{
+  width: 100%;
+  display: flex;
+  border-bottom-left-radius: 0;
+}
+
+.message-container.mine{
+  justify-content: end;
+}
+
+.message {
+  max-width: 50%;
+  margin: .25rem;
+  padding: .50rem .75rem;
+  background: var(--rose);
+  color: var(--white);
+  border-radius: 10px;
+}
+
+.message:not(.mine) {
+  border-bottom-left-radius: 0px;
+}
+
+.message.mine{
+  border-bottom-right-radius: 0px;
+  background: var(--blue);
+}
+
+.message span {
+  border-bottom: 1px solid var(--white);
+}
+
+.chat-list header {
+  height: 10%;
+  background: var(--rose);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.users_connected{
+  padding: 5%;
+}
+
+.avatar {
+  margin-right: 5%;
+  border: 1px solid hsl(120, 100%, 50%);
+  text-transform: uppercase;
+}
+
+.avatar:hover {
+  border-width: 3px;
+  color: hsl(240, 80%, 50%);
+}
+
+.username {
+  font-size: 1.20rem;
+  text-transform: lowercase;
+}
