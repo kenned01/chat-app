@@ -5,14 +5,15 @@ import { useState } from 'react';
 /* 
  1- sokect to send message
 */
-const ChatForm = ({socket, channel}) => {
+const ChatForm = ({socket, channel, username}) => {
 
   const [message, setMessage] = useState("");
 
   function onSend() {
     socket.emit('chat message', {
       room_id: channel,
-      message: message
+      message: message,
+      username: username
     })
 
     setMessage('')

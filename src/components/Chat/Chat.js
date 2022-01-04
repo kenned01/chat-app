@@ -71,7 +71,7 @@ const Chat = (props) => {
         
         <Messages socket={socket} username={state.username} />
 
-        <ChatForm socket={socket} channel={state.channel} />
+        <ChatForm socket={socket} channel={state.channel} username={state.username} />
 
       </div>
 

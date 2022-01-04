@@ -24,10 +24,12 @@ const Messages = ({socket, username}) => {
 
         var mine = (msg.sender === socket.id) ? "mine" : "";
 
+        console.log(msg)
+        
         return (
           <div className={"message-container " + mine} key={i}>
             <div className={"message " + mine}>
-              <p className="mb-2"><span>{username}</span></p>
+              <p className="mb-2"><span>{msg.username}</span></p>
               {msg.message}
             </div>
           </div>
