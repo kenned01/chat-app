@@ -20,6 +20,7 @@ const usersView = require('./app/users.js')
 const app = express()
 const httpServer = createServer(app)
 const liveReloadServer = livereload.createServer()
+const PORT = process.env.PORT || 5000
 
 const io = new Server(httpServer, options)
 const users = []
@@ -54,6 +55,6 @@ liveReloadServer.server.once("connection", () => {
   setTimeout(() => liveReloadServer.refresh("/"), 100)
 })
 
-httpServer.listen(8000, () => {
-  console.log("listening on http://localhost:8000")
+httpServer.listen(PORT, () => {
+  console.log("listening on http://localhost:" + PORT)
 })
