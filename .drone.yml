@@ -1,0 +1,21 @@
+kind: pipeline
+type: docker
+name: deploy
+
+trigger:
+  event:
+    - custom   # 👈 allows manual runs
+
+steps:
+  - name: deploy
+    image: docker:24
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    commands:
+      - docker compose up -d --build
+
+volumes:
+  - name: dockersock
+    host:
+      path: /var/run/docker.sock
