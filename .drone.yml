@@ -4,7 +4,7 @@ name: deploy
 
 trigger:
   event:
-    - custom   # manual builds only
+    - custom
 
 steps:
   - name: build-image
@@ -23,12 +23,8 @@ steps:
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
-    environment:
-      IMAGE_TAG: ${DRONE_BUILD_NUMBER}
     commands:
-      # pass the tag into docker compose
-      - export IMAGE_TAG=${DRONE_BUILD_NUMBER}
-      - docker compose up -d
+      - IMAGE_TAG=${DRONE_BUILD_NUMBER} docker compose up -d --force-recreate
 
 volumes:
   - name: dockersock
