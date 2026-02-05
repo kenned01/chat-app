@@ -13,10 +13,7 @@ steps:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker build \
-          -t chat-app:${DRONE_BUILD_NUMBER} \
-          -t chat-app:latest \
-          .
+      - docker build -t chat-app:${DRONE_BUILD_NUMBER} -t chat-app:latest .
 
   - name: deploy
     image: docker:24
