@@ -17,6 +17,12 @@ steps:
 
   - name: deploy
     image: docker:24
+
+
+    environment:
+      APP_PORT:
+        from_secret: APP_PORT
+        
     volumes:
       - name: dockersock
         path: /var/run/docker.sock

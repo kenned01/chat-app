@@ -3,4 +3,4 @@ services:
     image: chat-app:${IMAGE_TAG}
     container_name: chat-app
     ports:
-      - "3000:5000"
+      - "${APP_PORT}:5000"
