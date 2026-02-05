@@ -1,10 +1,6 @@
 services:
   app:
-    image: chat-app
+    image: chat-app:${IMAGE_TAG}
     container_name: chat-app
-    build:
-      context: .
-      dockerfile: Dockerfile
     ports:
       - "3000:5000"
-    

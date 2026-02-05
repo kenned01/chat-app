@@ -4,16 +4,31 @@ name: deploy
 
 trigger:
   event:
-    - custom   # 👈 allows manual runs
+    - custom   # manual builds only
 
 steps:
-  - name: deploy
+  - name: build-image
     image: docker:24
     volumes:
       - name: dockersock
         path: /var/run/docker.sock
     commands:
-      - docker compose up -d --build
+      - docker build \
+          -t chat-app:${DRONE_BUILD_NUMBER} \
+          -t chat-app:latest \
+          .
+
+  - name: deploy
+    image: docker:24
+    volumes:
+      - name: dockersock
+        path: /var/run/docker.sock
+    environment:
+      IMAGE_TAG: ${DRONE_BUILD_NUMBER}
+    commands:
+      # pass the tag into docker compose
+      - export IMAGE_TAG=${DRONE_BUILD_NUMBER}
+      - docker compose up -d
 
 volumes:
   - name: dockersock
